@@ -1,13 +1,12 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) exit;
-
+//
 class WC_Komerci_API
 {
-
+	//
 	public function get_error_message( $code )
 	{
-
 		$messages = array(
 			'20' => __( 'Parâmetro obrigatório ausente.', 'komerci' ),
 			'21' => __( 'Número de filiação em formato inválido.', 'komerci' ),
@@ -41,10 +40,10 @@ class WC_Komerci_API
 		if ( isset( $messages[ $code ] ) ) {
 			return $messages[ $code ];
 		}
-
+        //
 		return __( 'Houve um erro em processar o seu pagamento. Por favor, salve todos os dados e entre em contato conosco.', 'komerci' );
 	}
-
+	//
 	public function get_error_authorization( $authorization )
 	{
 		$code = array(
@@ -103,7 +102,7 @@ class WC_Komerci_API
 		if ( isset( $code[ $authorization ] ) ) {
 			return $code[ $authorization ];
 		}
-
+        //
 		return __( 'Problemas para autorizar a sua compra. Por favor, salve todos os dados e entre em contato conosco.', 'komerci' );
 	}
 
