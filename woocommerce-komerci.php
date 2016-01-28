@@ -52,10 +52,10 @@ function komerci_init()
 				$this->siteurl 						= $_SERVER['SERVER_NAME'];
 				$this->serverip 					= getHostByName(php_uname('n'));
 
-				$this->komerci_wsdlurl 				= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx?WSDL';
-				$this->komerci_liveurl         		= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx';
-              	$this->komerci_testurl				= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap_teste.asmx';
-              	$this->komerci_methodurl			= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx?op=GetAuthorized';
+                $this->komerci_wsdlurl 				= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx?WSDL';
+                $this->komerci_liveurl         		= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx';
+               	$this->komerci_testurl				= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap_teste.asmx';
+                $this->komerci_methodurl			= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx?op=GetAuthorized';
 
 				if (is_admin()) 
 				{
