@@ -10,9 +10,10 @@
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
-
+//
 function komerci_init()
 {
+	//
 	function add_komerci_gateway_class( $methods ) 
 	{
 		$methods[] = 'WC_Komerci_Gateway'; 
@@ -25,37 +26,44 @@ function komerci_init()
 	{
 		class WC_Komerci_Gateway extends WC_Payment_Gateway 
 		{
-			
+	        //		
 			public function __construct()
 			{
+				//
 				$this->id               			= 'komercigateway';
 				$this->icon             			= plugins_url( 'images/komerci.png' , __FILE__ )  ;
 				$this->has_fields       			= true;
 				$this->method_title    				= 'Komerci Settings';	
 				
+				//
 				$this->init_form_fields();
 				$this->init_settings();
 
+				//
 				$this->title                		= $this->get_option( 'title' );
 				$this->description       		 	= $this->get_option( 'description' );
 				$this->filiacao         		    = $this->get_option( 'filiacao' );
 				$this->token                		= $this->get_option( 'token' );
 				$this->method               		= $this->get_option( 'method' );
 
+				//
 				$this->user               			= $this->get_option( 'user' );
 				$this->password               		= $this->get_option( 'password' );
 				
+				//
 				$this->test               			= $this->get_option( 'test' );
 				$this->supports                 	= array( 'default_credit_card_form' );
 				$this->komerci_cardtypes       		= $this->get_option( 'komerci_cardtypes'); 
 	
+				//
 				$this->siteurl 						= $_SERVER['SERVER_NAME'];
 				$this->serverip 					= getHostByName(php_uname('n'));
 
-				$this->komerci_wsdlurl 				= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx?WSDL';
-				$this->komerci_liveurl         		= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx';
-              	$this->komerci_testurl				= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap_teste.asmx';
-              	$this->komerci_methodurl			= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx?op=GetAuthorized';
+				//
+                $this->komerci_wsdlurl 				= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx?WSDL';
+                $this->komerci_liveurl         		= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx';
+               	$this->komerci_testurl				= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap_teste.asmx';
+                $this->komerci_methodurl			= 'https://ecommerce.redecard.com.br/pos_virtual/wskomerci/cap.asmx?op=GetAuthorized';
 
 				if (is_admin()) 
 				{
@@ -64,7 +72,7 @@ function komerci_init()
 				
 			} // __construct()
 
-	
+	        //
 			public function admin_options()
 			{
 			?>		
@@ -86,7 +94,8 @@ function komerci_init()
 			
 			<?php
 			}
-
+			
+			//
 			public function test()
 			{
 				if('yes' == $this->test)
@@ -101,6 +110,7 @@ function komerci_init()
 				}
 			}
 
+			//
 			public function init_form_fields()
 			{				
 				  $this->form_fields = array(
@@ -177,11 +187,14 @@ function komerci_init()
 				
 			} // @function init_form_fields
 
+			
+			//
 			public function includes()
 			{
 				include_once 'woocommerce-komerci-api.php';
 			}
 			
+			//
 			public function get_icon()
 			{				
 				$icon = '';
@@ -202,6 +215,7 @@ function komerci_init()
 				return apply_filters( 'woocommerce_merchantone_icon', $icon, $this->id );
 			} // @function get_icon
 			
+			//
 			public function get_payment_method_image_url( $type )
 			{
 				
@@ -210,6 +224,7 @@ function komerci_init()
 				
 			} // @function get_payment_method_image_url
 			
+			//
 			function get_card_type( $number )
 			{
 				
@@ -245,6 +260,8 @@ function komerci_init()
 				}
 			} // @function get_card_type
 			
+		
+			//
 			function get_client_ip() 
 			{
 				$ipaddress = '';
@@ -265,6 +282,8 @@ function komerci_init()
 				return $ipaddress;
 			} // @function get_client_ip
 			
+		
+			//
 			public function komerci_params( $wc_order )
 			{
 				// Param expire dates.
@@ -333,6 +352,8 @@ function komerci_init()
 				
 			} // @function komerci_params
 			
+			
+			//
 			public function process_payment( $order_id )
 			{
 
